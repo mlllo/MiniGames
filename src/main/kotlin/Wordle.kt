@@ -57,5 +57,4 @@ fun main() {
             println(hashMsg);
         }
     }
-
 }
