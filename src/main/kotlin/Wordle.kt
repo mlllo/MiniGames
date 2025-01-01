@@ -4,7 +4,7 @@ import java.util.*
 
 fun main() {
     val dWord = DummyDictionary();
-    val word = dWord.getRandomWord();
+    val word = dWord.getRandomWord().uppercase(Locale.getDefault());
     val wordLength = word.length;
     val scanner = Scanner(System.`in`);
 
@@ -12,30 +12,30 @@ fun main() {
     while (true) {
         val answer = scanner.nextLine();
 
-        if(answer == "new") {
+        if(answer.equals("new", ignoreCase = true)) {
             dWord.getRandomWord();
             return main();
-        }else if (answer == "current") {
+        }else if (answer.equals("current", ignoreCase = true)) {
             println(word);
             println("Answer:");
             continue;
-        }else if(answer == "exit") {
+        }else if(answer.equals("exit", ignoreCase = true)) {
             return;
         }
 
-        if(answer == word) {
+        if(answer.equals(word, ignoreCase = true)) {
             println("You win! Do you want to try again? Write yes/no.");
             val wAnswer = scanner.nextLine();
-            if(wAnswer == "yes") {
+            if(wAnswer.equals("yes", ignoreCase = true)) {
                 dWord.getRandomWord();
                 return main();
-            }else if(wAnswer == "no") {
+            }else if(wAnswer.equals("no", ignoreCase = true)) {
                 return;
             }else {
                 println("UnCorrect!");
                 return;
             }
-        }else {
+        }else if(!answer.equals(word, ignoreCase = true)){
             println("Try again!");
             val hash = "⬛".repeat(wordLength);
             val hashMsg = hash.toCharArray();
@@ -49,7 +49,7 @@ fun main() {
             while (x != word.length) {
                 val aLetter = word[x];
                 val bLetter = answer[x];
-                if (aLetter == bLetter) {
+                if (aLetter.equals(bLetter, ignoreCase = true)) {
                     hashMsg[x] = aLetter;
                 }
                 x++;
