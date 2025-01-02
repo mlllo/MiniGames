@@ -10,7 +10,7 @@ fun main() {
 
     println("If you want exit write 'exit'.\nWord have: $wordLength letters");
     while (true) {
-        val answer = scanner.nextLine();
+        var answer = scanner.nextLine();
 
         if(answer.equals("new", ignoreCase = true)) {
             dWord.getRandomWord();
@@ -25,15 +25,14 @@ fun main() {
 
         if(answer.equals(word, ignoreCase = true)) {
             println("You win! Do you want to try again? Write yes/no.");
-            val wAnswer = scanner.nextLine();
-            if(wAnswer.equals("yes", ignoreCase = true)) {
+            answer = scanner.nextLine()
+            if(answer.equals("yes", ignoreCase = true)) {
                 dWord.getRandomWord();
                 return main();
-            }else if(wAnswer.equals("no", ignoreCase = true)) {
+            }else if(answer.equals("no", ignoreCase = true)) {
                 return;
             }else {
                 println("UnCorrect!");
-                return;
             }
         }else if(!answer.equals(word, ignoreCase = true)){
             println("Try again!");
