@@ -5,11 +5,10 @@ import java.util.*
 fun main() {
     val dWord = DummyDictionary();
     var word = dWord.getRandomWord().uppercase(Locale.getDefault());
-    val wordLength = word.length;
     val scanner = Scanner(System.`in`);
     var isRunning = true;
 
-    println("If you want exit write 'exit'.\nWord have: $wordLength letters");
+    println("If you want exit write 'exit'.\nWord have: ${word.length} letters");
 
     while (isRunning) {
         var answer = scanner.nextLine();
@@ -34,11 +33,11 @@ fun main() {
             }
         } else if(!answer.equals(word, ignoreCase = true)){
             println("Try again!");
-            val hash = "⬛".repeat(wordLength);
+            val hash = "⬛".repeat(word.length);
             val hashMsg = hash.toCharArray();
 
-            if (answer.length != wordLength) {
-                println("Word must have $wordLength letters!");
+            if (answer.length != word.length) {
+                println("Word must have ${word.length} letters!");
                 continue;
             }
 
